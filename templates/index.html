@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health GPT Chatbot</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #ab0bef;
+            padding: 40px;
+        }
+        .chat-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .chat-box {
+            margin-top: 20px;
+        }
+        .user, .bot {
+            margin: 10px 0;
+        }
+        .user { color: #007BFF; font-weight: bold; }
+        .bot { color: #28a745; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1 style="color: azure; font-family: Georgia, 'Times New Roman', Times, serif; font-size: x-large; text-align: inherit;">MediQA</h1>
+    <div class="chat-container">
+        <h2>Ask Your Health Questions</h2>
+        <form action="/get_response" method="post">
+            <input type="text" name="user_input" placeholder="Enter your health question..." style="width: 80%;" required>
+            <button type="submit">Ask</button>
+        </form>
+
+        {% if user_input %}
+        <div class="chat-box">
+            <div class="user">You: {{ user_input }}</div>
+            <div class="bot">Bot: {{ chatbot_response }}</div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
